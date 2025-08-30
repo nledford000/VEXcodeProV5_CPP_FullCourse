@@ -3,15 +3,14 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Motor1               motor         1               
+// Servo1               servo         A               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 using namespace vex;
 
-extern motor Motor1;
+extern servo Servo1;
 
 int main() {
-  Motor1.spin(forward, 50, percent);
+  Servo1.setPosition(90, degrees);
   wait(2, seconds);
-  Motor1.stop();
-  Brain.Screen.print("Motor ran for 2 seconds");
+  Servo1.setPosition(0, degrees);
 }
