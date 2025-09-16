@@ -11,4 +11,3 @@ int main() {
   Brain.Screen.print("Hello VEX!");
   Controller1.Screen.print("Hello Controller!");
 }
-//hello
