@@ -3,18 +3,31 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// LeftMotor            motor         1               
+// Controller1          controller                    
 // RightMotor           motor         2               
+// LeftMotor            motor         1               
+// Arm                  motor         3               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 using namespace vex;
 
-extern motor LeftMotor;
-extern motor RightMotor;
+int upSpeed = 100;
+int downSpeed = 45;
+int holdSpeed = 25;
 
 int main() {
-  LeftMotor.spin(forward, 50, percent);
-  RightMotor.spin(forward, 50, percent);
-  wait(3, seconds);
-  LeftMotor.stop();
-  RightMotor.stop();
+	while(true){
+		int leftPower = Controller1.Axis3.position();
+		int rightPower = Controller1.Axis2.position();
+		
+		LeftMotor.spin(fwd, leftPower, pct);
+		RightMotor.spin(fwd, rightPower, pct);
+		
+		if(Controller1.ButtonR1.pressing()){
+			Arm.spin(fwd, upSpeed, pct);
+			}else if(Controller1.ButtonR2.pressing()){
+			Arm.spin(fwd, downSpeed, pct);
+			}else{
+			Arm.spin(fwd, holdSpeed, pct);
+		}
+	}
 }

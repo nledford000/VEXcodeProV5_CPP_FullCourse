@@ -17,5 +17,3 @@ int main() {
 
   Controller1.Screen.print("Number: %d", number);
 }
-
-// lee was here
